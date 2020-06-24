@@ -31,7 +31,8 @@ class SwipeList extends Component {
         if (key === 'like') {
             const userLike= [];
             userLike.push(userSave);
-            const userLikeToString = userSave.toString();
+            console.log(userLike)
+            const userLikeToString = userLike.toString();
             localStorage.setItem('userLike', userLikeToString);
             this.getNew();
         }

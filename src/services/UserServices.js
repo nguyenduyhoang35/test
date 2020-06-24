@@ -7,7 +7,7 @@ class UserServices {
     get() {
         return this.axios.get(`/?randomapi`).then(res => {
 
-            return res.data.results
+            return (res.data || {}).results || []
         });
     }
 
