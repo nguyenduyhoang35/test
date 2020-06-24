@@ -17,19 +17,27 @@ class SwipeList extends Component {
         })
     }
 
+    async getNew() {
+        let data = await userServices.get();
+        this.setState({
+            data: data
+        })
+    }
 
-    async setNewItem(userSave, key) {
-        let userLike = [];
+
+
+
+    setNewItem(userSave, key) {
         if (key === 'like') {
+            const userLike= [];
             userLike.push(userSave);
-            localStorage.setItem('userLike', userSave);
-            let data = await userServices.get();
-            this.setState({
-                data: data
-            }, () => {
-                const data = localStorage.getItem('userLike');
-                console.log(data)
-            })
+            const userLikeToString = userSave.toString();
+            localStorage.setItem('userLike', userLikeToString);
+            this.getNew();
+        }
+
+        if (key === 'next') {
+            this.getNew();
         }
     }
 
